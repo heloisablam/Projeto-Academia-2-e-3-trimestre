@@ -1,9 +1,9 @@
 <?php
-    //Incluir o arquivo para carregamento das classes
+    // Incluir o arquivo para carregamento das classes
     require "../../autoload.php";
 
-    //Instanciar um objeto da classe DAO
-    $dao = new AlunoDAO();
+    // Instanciar um objeto da classe DAO
+    $dao = new alunoDAO();
 ?>
 
 <!doctype html>
@@ -367,28 +367,30 @@
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
-            <h1 class="h2">Gerenciamento de Alunos</h1>
+            <h1 class="h2">Gerenciamento de Alunos</h1>           
             
           </div>
+          <p>
+            <a href="create.php">Novo Aluno</a>
+          </p>          
           
           <div class="table-responsive small">
-           <table class="table table-hover">
-
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>CPF</th>
-                <th>Telefone</th>
-            </tr>
-            <?php foreach($dao->read() as $Aluno) : ?>
+            <table class="table table-hover">
                 <tr>
-                    <td><?= $Aluno->getId() ?></td>
-                    <td><?= $Aluno->getNome() ?></td>
-                    <td><?= $Aluno->getCpf() ?></td>
-                    <td><?= $Aluno->getTelefone() ?></td>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
                 </tr>
+                <?php foreach($dao->read() as $aluno) : ?>
+                    <tr>
+                        <td><?= $aluno->getId() ?></td>
+                        <td><?= $aluno->getNome() ?></td>
+                        <td><?= $aluno->getCpf() ?></td>
+                        <td><?= $aluno->getTelefone() ?></td>
+                    </tr>
                 <?php endforeach ?>
-           </table>
+            </table>
           </div>
         </main>
       </div>

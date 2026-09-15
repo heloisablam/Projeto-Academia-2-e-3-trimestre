@@ -371,6 +371,10 @@
             
           </div>
           
+           <p>
+            <a href="create.php">Nova Categoria</a>
+          </p>  
+
           <div class="table-responsive small">
             <table class="table table-hover">
             <tr>

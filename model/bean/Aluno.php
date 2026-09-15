@@ -2,7 +2,7 @@
     class Aluno {
         // Atributos
         private $id;
-        private $aluno;
+        private $nome;
         private $cpf;
         private $telefone;
 
