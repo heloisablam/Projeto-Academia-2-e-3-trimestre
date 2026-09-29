@@ -381,6 +381,7 @@
                     <th>Nome</th>
                     <th>CPF</th>
                     <th>Telefone</th>
+                    <th>Ações</th>
                 </tr>
                 <?php foreach($dao->read() as $aluno) : ?>
                     <tr>
@@ -388,6 +389,14 @@
                         <td><?= $aluno->getNome() ?></td>
                         <td><?= $aluno->getCpf() ?></td>
                         <td><?= $aluno->getTelefone() ?></td>
+                        <td>
+                          <a href="edit.php?id=<?= $aluno->getId() ?>">
+                            Editar
+                          </a>
+                          <a href="destroy.php?id=<?= $aluno->getId() ?>">
+                            Excluir
+                          </a>
+                        </td>
                     </tr>
                 <?php endforeach ?>
             </table>

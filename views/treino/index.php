@@ -368,8 +368,13 @@
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
           >
             <h1 class="h2">Gerenciamento de Treinos</h1>
-            
+
           </div>
+
+           <p>
+            <a href="create.php">Novo Treino</a>
+            </p>  
+            
           
           <div class="table-responsive small">
             <table class="table table-hover">

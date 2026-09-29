@@ -1,5 +1,25 @@
 <?php
+
 class TreinoDAO {
+
+    public function create(Treino $Treino) {
+        try {
+            $query = BD::getConexao()->prepare(
+                "INSERT INTO treino (Nome, Descricao) VALUES (:nome, :descricao)"
+            );
+
+            $query->bindValue(":nome", $Treino->getNome());
+            $query->bindValue(":descricao", $Treino->getDescricao());
+
+            if (!$query->execute()) {
+                print_r($query->errorInfo());
+            }
+
+        } catch (PDOException $e) {
+            echo "Erro ao inserir treino: " . $e->getMessage();
+        }
+    }
+
     public function read() {
         try {
             $query = BD::getConexao()->prepare("SELECT * FROM treino");
@@ -12,6 +32,7 @@ class TreinoDAO {
 
             foreach ($query->fetchAll(PDO::FETCH_ASSOC) as $linha) {
                 $Treino = new Treino();
+
                 $Treino->setId($linha['idTreino']);
                 $Treino->setNome($linha['Nome']);
                 $Treino->setDescricao($linha['Descricao']);
@@ -26,4 +47,5 @@ class TreinoDAO {
         }
     }
 }
+
 ?>
