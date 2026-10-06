@@ -23,6 +23,7 @@
       href="https://getbootstrap.com/docs/5.3/examples/dashboard/"
     />
     <script src="../../js/color-modes.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
     <meta name="theme-color" content="#712cf9" />
     <link href="../../css/dashboard.css" rel="stylesheet" />
@@ -390,11 +391,11 @@
                         <td><?= $aluno->getCpf() ?></td>
                         <td><?= $aluno->getTelefone() ?></td>
                         <td>
-                          <a href="edit.php?id=<?= $aluno->getId() ?>">
-                            Editar
+                          <a title="Editar" href="edit.php?id=<?= $aluno->getId() ?>">
+                            <i class="bi bi-pencil"></i>
                           </a>
-                          <a href="destroy.php?id=<?= $aluno->getId() ?>">
-                            Excluir
+                          <a title="Excluir" class="link-danger" href="destroy.php?id=<?= $aluno->getId() ?>">
+                            <i class="bi bi-trash3"></i>
                           </a>
                         </td>
                     </tr>
