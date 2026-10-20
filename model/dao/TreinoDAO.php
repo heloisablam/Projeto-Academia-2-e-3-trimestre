@@ -74,7 +74,7 @@ class TreinoDAO {
             );
             $query->bindValue(':i', $treino->getId(),PDO::PARAM_INT);
             $query->bindValue(':n', $treino->getNome(),PDO::PARAM_STR);
-            $query->bindValue(':c', $treino->getDescricao(),PDO::PARAM_STR);
+            $query->bindValue(':d', $treino->getDescricao(),PDO::PARAM_STR);
 
              if (!$query->execute()) {
                 print_r($query->errorInfo());

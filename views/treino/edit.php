@@ -380,11 +380,11 @@
 
                 <input type="hidden" name="id" value="<?= $Treino->getId()?>">
 
-                     <label for="Nome">Nome</label>
-                    <input type="text" name="Nome" value="<?= $Treino->getNome() ?>" class="form-control">
+                     <label for="nome">Nome</label>
+                    <input type="text" name="nome" value="<?= $Treino->getNome() ?>" class="form-control">
 
-                    <label for="Descricao">Descrição</label>
-                    <input type="text" name="Descricao" value="<?= $Treino->getDescricao() ?>" class="form-control">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" name="descricao" value="<?= $Treino->getDescricao() ?>" class="form-control">
                 
 
                 <div class="form-group">

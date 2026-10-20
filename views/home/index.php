@@ -366,8 +366,7 @@
           <div class="table-responsive small">
             <p>
               Sistema Orientado a Objetos que faz um CRUD de 
-              uma locadora como demonstração para a turma de INF 4 
-              do ano de 2026. 
+              uma Academia como projeto das Alunas Heloisa e Kemelin de INF4. 
             </p>
             <p>
               O Sistema está sendo desenvolvido seguindo o padrão 

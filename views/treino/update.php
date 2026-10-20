@@ -5,8 +5,8 @@
     $Treino = new Treino();
 
     //Definir os valores dos atributos a partir dos dados do form
-    $Treino->setDescricao($_POST['Descricao']);
-    $Treino->setNome($_POST['Nome']);
+    $Treino->setDescricao($_POST['descricao']);
+    $Treino->setNome($_POST['nome']);
     $Treino->setId($_POST['id']);
 
     //Instanciar um objeto da classe ClienteDAO

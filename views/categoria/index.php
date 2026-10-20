@@ -366,12 +366,10 @@
         </div>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-          >
-            <h1 class="h2">Gerenciamento de categorias</h1>
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Gerenciamento de Categorias</h1>
             
           </div>
-          
            <p>
             <a href="create.php">Nova Categoria</a>
           </p>  
@@ -381,30 +379,30 @@
             <tr>
                 <th>ID</th>
                 <th>Descrição</th>
+                <th>Ações</th>
             </tr>
             <?php foreach($dao->read() as $categoria) : ?>
-                 <tr>  
-                 <tr>
-                <td>
-                    <?= $categoria->getId() ?>
-                </td>
+                <tr>
+                  <td>
+                      <?= $categoria->getId() ?>
+                  </td>
 
-                <td>
-                    <?= $categoria->getDeacricao() ?>
-                </td>
+                  <td>
+                      <?= $categoria->getDeacricao() ?>
+                  </td>
 
-                <td>
-                    <a title="Editar" href="edit.php?id=<?= $categoria->getId() ?>">
-                        <i class="bi bi-pencil"></i>
-                    </a>
+                  <td>
+                      <a title="Editar" href="edit.php?id=<?= $categoria->getId() ?>">
+                          <i class="bi bi-pencil"></i>
+                      </a>
 
-                    <a title="Excluir"
-                       class="link-danger"
-                       href="destroy.php?id=<?= $categoria->getId() ?>">
-                        <i class="bi bi-trash3"></i>
-                    </a>
-                </td>
-            </tr>
+                      <a title="Excluir"
+                        class="link-danger"
+                        href="destroy.php?id=<?= $categoria->getId() ?>">
+                          <i class="bi bi-trash3"></i>
+                      </a>
+                      </td>
+                  </tr>
                 <?php endforeach ?>
            </table>
           </div>
