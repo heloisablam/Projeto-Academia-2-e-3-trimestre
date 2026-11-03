@@ -386,6 +386,7 @@
                 </tr>
                 <?php foreach($dao->read() as $exercicio) : ?>
                     <tr>
+                      
                         <td><?= $exercicio->getId() ?></td>
                         <td><?= $exercicio->getNome() ?></td>
                         <td><?= $exercicio->getDescricao() ?></td>
