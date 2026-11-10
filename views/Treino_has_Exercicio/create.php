@@ -1,7 +1,11 @@
 <?php
  require "../../autoload.php";
 
- $daoTreino_has_Exercicio = new Treino_has_ExercicioDAO();
+$daoTreino_has_Exercicio = new Treino_has_ExercicioDAO();
+
+$daoTreino = new TreinoDAO();
+
+$daoExercicio = new ExercicioDAO();
 ?>
 
 <!doctype html>

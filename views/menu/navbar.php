@@ -69,11 +69,11 @@
     </h6>
     <ul class="nav flex-column mb-auto">
     <li class="nav-item">
-        <a class="nav-link d-flex align-items-center gap-2" href="#">
+        <a class="nav-link d-flex align-items-center gap-2" href="../Aluno_has_Treino">
         <svg class="bi" aria-hidden="true">
             <use xlink:href="#file-earmark-text"></use>
         </svg>
-        Current month
+        Editar Aluno e Treino
         </a>
     </li>
     <li class="nav-item">

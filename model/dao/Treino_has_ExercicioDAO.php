@@ -40,7 +40,6 @@ class Treino_has_ExercicioDAO {
                 $Treino_has_Exercicio = new Treino_has_Exercicio();
 
                 // Dados da associação
-                $Treino_has_Exercicio->setId($linha['id']);
                 $Treino_has_Exercicio->setSeries($linha['series']);
                 $Treino_has_Exercicio->setRepeticao($linha['repeticao']);
 
