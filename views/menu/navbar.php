@@ -1,16 +1,12 @@
 <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
     <ul class="nav flex-column">
-    <li class="nav-item">
-        <a
-        class="nav-link d-flex align-items-center gap-2 active"
-        aria-current="page"
-        href="../index"
-        >
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center gap-2" href="../index">
         <svg class="bi" aria-hidden="true">
             <use xlink:href="#house-fill"></use>
         </svg>
         Início
-        </a>
+        </a>                                                
     </li>
     <li class="nav-item">
         <a class="nav-link d-flex align-items-center gap-2" href="../treino">
@@ -18,8 +14,7 @@
             <use xlink:href="#file-earmark"></use>
         </svg>
         Treinos
-        </a>
-    </li>
+        </a>                                                
     <li class="nav-item">
         <a class="nav-link d-flex align-items-center gap-2" href="../categoria">
         <svg class="bi" aria-hidden="true">
@@ -49,7 +44,7 @@
         <svg class="bi" aria-hidden="true">
             <use xlink:href="#puzzle"></use>
         </svg>
-        Treino_has_Exercicio
+        Treino e Exercicio
         </a>
     </li>
     </ul>
@@ -73,7 +68,7 @@
         <svg class="bi" aria-hidden="true">
             <use xlink:href="#file-earmark-text"></use>
         </svg>
-        Editar Aluno e Treino
+        Aluno e Treino
         </a>
     </li>
     <li class="nav-item">

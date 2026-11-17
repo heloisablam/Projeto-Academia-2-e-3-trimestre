@@ -6,66 +6,153 @@ class Treino_has_ExercicioDAO {
         try {
             $query = BD::getConexao()->prepare(
                 "INSERT INTO Treino_has_Exercicio
-                (Series, Repeticao, Treino_idTreino, Exercicio_idExercicio)
+                (series, repeticao, Treino_idTreino, Exercicio_idExercicio)
                 VALUES (:s, :r, :t, :e)"
             );
 
-            $query->bindValue(':s', $Treino_has_Exercicio->getSeries(), PDO::PARAM_STR);
-            $query->bindValue(':r', $Treino_has_Exercicio->getRepeticao(), PDO::PARAM_STR);
-
-            // Bind das chaves estrangeiras
-            $query->bindValue(':t', $Treino_has_Exercicio->getTreino()->getId(), PDO::PARAM_INT);
-            $query->bindValue(':e', $Treino_has_Exercicio->getExercicio()->getId(), PDO::PARAM_INT);
+            $query->bindValue(':s', $Treino_has_Exercicio->getSeries());
+            $query->bindValue(':r', $Treino_has_Exercicio->getRepeticao());
+            $query->bindValue(':t', $Treino_has_Exercicio->getTreino()->getId());
+            $query->bindValue(':e', $Treino_has_Exercicio->getExercicio()->getId());
 
             $query->execute();
 
+            return true;
+
         } catch (PDOException $e) {
-            echo "Erro #1: " . $e->getMessage();
+            echo "Erro ao cadastrar: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function find($treino, $exercicio) {
+        try {
+            $query = BD::getConexao()->prepare(
+                "SELECT * FROM Treino_has_Exercicio
+                WHERE Treino_idTreino = :t
+                AND Exercicio_idExercicio = :e"
+            );
+
+            $query->bindValue(':t', $treino);
+            $query->bindValue(':e', $exercicio);
+
+            $query->execute();
+
+            $linha = $query->fetch(PDO::FETCH_ASSOC);
+
+            if ($linha) {
+                $Treino_has_Exercicio = new Treino_has_Exercicio();
+
+                $Treino_has_Exercicio->setSeries($linha['series']);
+                $Treino_has_Exercicio->setRepeticao($linha['repeticao']);
+
+                $daoTreino = new TreinoDAO();
+                $Treino_has_Exercicio->setTreino(
+                    $daoTreino->find($linha['Treino_idTreino'])
+                );
+
+                $daoExercicio = new ExercicioDAO();
+                $Treino_has_Exercicio->setExercicio(
+                    $daoExercicio->find($linha['Exercicio_idExercicio'])
+                );
+
+                return $Treino_has_Exercicio;
+            }
+
+            return null;
+
+        } catch (PDOException $e) {
+            echo "Erro ao buscar: " . $e->getMessage();
+            return null;
         }
     }
 
     public function read() {
         try {
-
             $query = BD::getConexao()->prepare(
                 "SELECT * FROM Treino_has_Exercicio"
             );
 
             $query->execute();
 
-            $listaTreino_has_Exercicio = array();
+            $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach ($query->fetchAll(PDO::FETCH_ASSOC) as $linha) {
+            $lista = array();
 
+            foreach ($resultado as $linha) {
                 $Treino_has_Exercicio = new Treino_has_Exercicio();
 
-                // Dados da associação
                 $Treino_has_Exercicio->setSeries($linha['series']);
                 $Treino_has_Exercicio->setRepeticao($linha['repeticao']);
 
-                // Buscar o treino
                 $daoTreino = new TreinoDAO();
-                $treino = $daoTreino->find($linha['Treino_idTreino']);
+                $Treino_has_Exercicio->setTreino(
+                    $daoTreino->find($linha['Treino_idTreino'])
+                );
 
-                $Treino_has_Exercicio->setTreino($treino);
-
-                // Buscar o exercício
                 $daoExercicio = new ExercicioDAO();
-                $exercicio = $daoExercicio->find($linha['Exercicio_idExercicio']);
+                $Treino_has_Exercicio->setExercicio(
+                    $daoExercicio->find($linha['Exercicio_idExercicio'])
+                );
 
-                $Treino_has_Exercicio->setExercicio($exercicio);
-
-                $listaTreino_has_Exercicio[] = $Treino_has_Exercicio;
+                $lista[] = $Treino_has_Exercicio;
             }
 
-            return $listaTreino_has_Exercicio;
+            return $lista;
 
         } catch (PDOException $e) {
-
-            echo "Erro #2: " . $e->getMessage();
-
+            echo "Erro ao listar: " . $e->getMessage();
             return array();
         }
     }
+
+    public function update($Treino_has_Exercicio, $treinoAntigo, $exercicioAntigo) {
+        try {
+            $query = BD::getConexao()->prepare(
+                "UPDATE Treino_has_Exercicio SET
+                    series = :s,
+                    repeticao = :r,
+                    Treino_idTreino = :t,
+                    Exercicio_idExercicio = :e
+                WHERE Treino_idTreino = :ta
+                AND Exercicio_idExercicio = :ea"
+            );
+
+            $query->bindValue(':s', $Treino_has_Exercicio->getSeries());
+            $query->bindValue(':r', $Treino_has_Exercicio->getRepeticao());
+            $query->bindValue(':t', $Treino_has_Exercicio->getTreino()->getId());
+            $query->bindValue(':e', $Treino_has_Exercicio->getExercicio()->getId());
+            $query->bindValue(':ta', $treinoAntigo);
+            $query->bindValue(':ea', $exercicioAntigo);
+
+            $query->execute();
+
+            return true;
+
+        } catch (PDOException $e) {
+            echo "Erro ao atualizar: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function destroy($treino, $exercicio) {
+        try {
+            $query = BD::getConexao()->prepare(
+                "DELETE FROM Treino_has_Exercicio
+                WHERE Treino_idTreino = :t
+                AND Exercicio_idExercicio = :e"
+            );
+
+            $query->bindValue(':t', $treino);
+            $query->bindValue(':e', $exercicio);
+
+            $query->execute();
+
+            return true;
+
+        } catch (PDOException $e) {
+            echo "Erro ao excluir: " . $e->getMessage();
+            return false;
+        }
+    }
 }
-?>

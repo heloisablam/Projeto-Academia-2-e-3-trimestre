@@ -1,18 +1,20 @@
 
 <?php
- require "../../autoload.php";
+    require "../../autoload.php";
 
- $dao = new Aluno_has_TreinoDAO();
+    $dao = new Treino_has_ExercicioDAO();
 
- $Aluno_has_Treino = $dao->find($_GET['aluno'], $_GET['treino']);
+    $Treino_has_Exercicio = $dao->find(
+        $_GET['treino'],
+        $_GET['exercicio']
+    );
 
- $alunoAntigo = $Aluno_has_Treino->getAluno()->getId();
- $treinoAntigo = $Aluno_has_Treino->getTreino()->getId();
+    $treinoAntigo = $Treino_has_Exercicio->getTreino()->getId();
+    $exercicioAntigo = $Treino_has_Exercicio->getExercicio()->getId();
 
- $daoAluno = new AlunoDAO();
- $daoTreino = new TreinoDAO();
+    $daoTreino = new TreinoDAO();
+    $daoExercicio = new ExercicioDAO();
 ?>
-
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>

@@ -1,8 +1,7 @@
 <?php
     require "../../autoload.php";
 
-    // Receber os IDs pela URL
-    $alunoId = $_GET['aluno'];
+    $exercicioId = $_GET['exercicio'];
     $treinoId = $_GET['treino'];
 
     // Instanciar um objeto da classe DAO
