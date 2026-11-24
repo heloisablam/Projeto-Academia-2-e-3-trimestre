@@ -8,6 +8,13 @@
         $_GET['exercicio']
     );
 
+    if ($Treino_has_Exercicio == null) {
+        die("Treino ou exercício não encontrado!");
+    }
+
+    $treinoAntigo = $Treino_has_Exercicio->getTreino()->getId();
+    $exercicioAntigo = $Treino_has_Exercicio->getExercicio()->getId();
+
     $daoTreino = new TreinoDAO();
     $daoExercicio = new ExercicioDAO();
 ?>

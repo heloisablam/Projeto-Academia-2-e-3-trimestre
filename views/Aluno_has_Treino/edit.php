@@ -2,18 +2,22 @@
 <?php
     require "../../autoload.php";
 
-    $dao = new Treino_has_ExercicioDAO();
+    $dao = new Aluno_has_TreinoDAO();
 
-    $Treino_has_Exercicio = $dao->find(
-        $_GET['treino'],
-        $_GET['exercicio']
+    $Aluno_has_Treino = $dao->find(
+        $_GET['aluno'],
+        $_GET['treino']
     );
 
-    $treinoAntigo = $Treino_has_Exercicio->getTreino()->getId();
-    $exercicioAntigo = $Treino_has_Exercicio->getExercicio()->getId();
+    if ($Aluno_has_Treino == null) {
+        die("Aluno ou treino não encontrado!");
+    }
 
+    $alunoAntigo = $Aluno_has_Treino->getAluno()->getId();
+    $treinoAntigo = $Aluno_has_Treino->getTreino()->getId();
+
+    $daoAluno = new AlunoDAO();
     $daoTreino = new TreinoDAO();
-    $daoExercicio = new ExercicioDAO();
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
